@@ -1,0 +1,33 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "Web Development Hangman Game",
+  "main": "index.js",
+  "scripts": {
+    "pug-watch": "pug -w ./views/ -o ./pages/ -P",
+    "compile:pug": "pug ./views/ -o ./pages/ -P",
+
+    "sass-watch": "node-sass -w ./src/scss/main.scss ./src/css/style.css", 
+    "compile:sass": "node-sass ./src/scss/main.scss ./src/css/style.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" ./src/css/style.css -o ./src/css/style.prefix.css",
+    "compress:css": "node-sass ./src/css/style.prefix.css ./src/css/style.min.css --output-style compressed",
+    
+    "webpack-dev": "webpack-dev-server",
+    "webpack-watch": "webpack --watch",
+
+    "dev": "npm-run-all --parallel pug-watch sass-watch webpack-watch",
+    "build": "npm-run-all compile:sass prefix:css compress:css compile:pug"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^8.1.0",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^5.0.0",
+    "pug": "^2.0.1",
+    "pug-cli": "^1.0.0-alpha6",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
+  }
+}
