@@ -10,13 +10,13 @@
         $data = array();
 
         // Depending on the page, set the appropriate data
-    } else {
+    } else { 
         echo load_page("main-menu", array());
     }
 
 
     function load_page($pageName, $data) {
-        $main_page_contents = file_get_contents(__DIR__ . "/views/pages/layout.html");
+        $main_page_contents = file_get_contents(__DIR__ . "/views/layout/layout.html");
         $emb_page_contents = file_get_contents(__DIR__ . "/views/pages/" . $pageName . ".html");
 
         // If there is data

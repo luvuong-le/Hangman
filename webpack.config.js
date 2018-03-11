@@ -4,7 +4,8 @@ module.exports =  {
     mode: 'development',
     entry: {
         app: [
-            './src/js/app.js'
+            './src/js/app.js',
+            './src/js/loader.js'
         ]
     },
     output: {

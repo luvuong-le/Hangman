@@ -1,0 +1,23 @@
+.loader {
+    width: 5rem;
+    height: 5rem;
+
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border: 1.6rem solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 1.6rem solid #3498db;
+
+    -webkit-animation: spin 1s infinite;
+    animation: spin 1s infinite;
+    z-index: 1;
+
+    &__hidden {
+        transition: .5s ease;
+        visibility: hidden;
+        opacity: 0;
+    }
+}

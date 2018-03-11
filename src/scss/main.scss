@@ -1,3 +1,12 @@
+@import 'abstracts/var';
+@import 'abstracts/keyframes';
+
 @import 'base/base';
 
 @import 'components/btn';
+@import 'components/loader';
+
+@import 'layout/header';
+
+@import 'pages/main-menu';
+

@@ -1,10 +1,15 @@
-block content 
+block content
+    .loader#loader 
     .container
-        .main
-            .main__title
+        .main.main--hidden#section-main
+            .main__header
                 h1 Hangman
+                p Made by Lu-Vuong Le
+                br
+                p -- Main Menu -- 
             .main__content
-                a(href="").main__btn Single Player 
-                a(href="").main__btn Two Players 
-                a(href="").main__btn Exit
+                .main__options
+                        a(href="").main__btn.main__btn--left Single Player
+                        a(href="").main__btn.main__btn--right Two Player
+                        a(href="").main__btn.main__btn--bottom Exit 
 

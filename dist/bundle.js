@@ -78,18 +78,29 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("let hangmanManager = {\r\n\r\n};\r\n\r\nconsole.log(true);\n\n//# sourceURL=webpack:///./src/js/app.js?");
+eval("let hangmanManager = {\r\n\r\n};\r\n\r\n\r\nconst DEV_MODE = true;\r\n\r\nif (DEV_MODE) {\r\n    // Refresh When Page Clicked -- DEVELOPMENT --\r\n    window.addEventListener(\"click\", (e) => {\r\n        window.location.reload();\r\n    });\r\n}\r\n\n\n//# sourceURL=webpack:///./src/js/app.js?");
+
+/***/ }),
+
+/***/ "./src/js/loader.js":
+/*!**************************!*\
+  !*** ./src/js/loader.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const loader = document.getElementById(\"loader\");\r\nconst main = document.getElementById(\"section-main\");\r\n\r\n// On Window Load\r\nwindow.addEventListener(\"load\", (e) => {\r\n    setTimeout(() => {\r\n        loader.classList.add(\"loader__hidden\");\r\n    }, 100);\r\n\r\n\r\n    main.classList.remove(\"main--hidden\");\r\n});\n\n//# sourceURL=webpack:///./src/js/loader.js?");
 
 /***/ }),
 
 /***/ 0:
-/*!*****************************!*\
-  !*** multi ./src/js/app.js ***!
-  \*****************************/
+/*!************************************************!*\
+  !*** multi ./src/js/app.js ./src/js/loader.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! ./src/js/app.js */\"./src/js/app.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/app.js?");
+eval("__webpack_require__(/*! ./src/js/app.js */\"./src/js/app.js\");\nmodule.exports = __webpack_require__(/*! ./src/js/loader.js */\"./src/js/loader.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/app.js_./src/js/loader.js?");
 
 /***/ })
 
