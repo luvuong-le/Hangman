@@ -21,6 +21,11 @@
                     "TITLE" => "Hangman | Single Player"
                 ];
                 break;
+            case "mode-single-category":
+                $data = [
+                    "TITLE" => "Hangman | Cateogories"
+                ];
+                break;
         }
 
         echo load_page($pageName, $data);

@@ -1,0 +1,125 @@
+.game {
+    &__header {
+        height: 10%;
+        
+        display: flex;
+        
+        padding: 1rem;
+
+        border-bottom: 1px solid rgb(212, 212, 212);
+
+        & > h1 {
+            padding: 1rem;
+        }
+
+        & > span {
+            margin:  0 0 0 auto;
+            align-self: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+
+    &__content {
+        position: relative;
+        height: 90%;
+        
+        /* *** HANGMAN: WORD CSS BEGIN ** */
+        &-word {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            background: lightblue;
+        }
+
+        &-letter {
+            text-align: center;
+            width: 4rem;
+            height: 4rem;
+            margin: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+
+            &--hidden {
+                &::after {
+                    content: "";
+                    display: inline-block;
+                    width: 100%;
+                    font-size: 2rem;
+                    border-bottom: 1px solid #aaa;
+                    text-align: center;
+                }
+            }
+
+            &--shown {
+                color: #fff;
+                background: rgba(52, 152, 219, 0.8);
+                font-size: 1.6rem;
+                padding: 1rem;
+                cursor: pointer;
+                transition: all .5s;
+
+                &:hover {
+                    transform: scale(1.3);
+                }
+            }
+        }
+
+        /* *** HANGMAN: WORD CSS END ** */
+
+        /* *** HANGMAN: UI CSS BEGIN ** */
+
+        &-ui {
+            padding: .5em;
+
+            display: flex;
+
+            // background: lightyellow;
+        }
+
+        &-hangman {
+            width: 45%;
+            padding: 2.3rem;
+        }
+
+        &-game-details {
+            width: 50%;
+
+            display: flex;
+            flex-flow: column;
+
+            padding: 2.3rem 3rem;
+        }
+
+        &-guessed {
+            display: grid;
+ 
+        }
+
+        &-letters {
+            display: flex;
+            flex-flow: wrap;
+
+            &--white {
+                background: #fff;
+            }
+
+            &--blue {
+                background: lightblue;
+            }
+        }
+
+        &-input {
+            display: flex;
+            height: auto;
+        }
+
+        &-hints {
+            text-transform: uppercase;
+            width: auto;
+            padding: 0;
+        }
+
+        /* *** HANGMAN: WORD CSS END ** */
+    }
+}

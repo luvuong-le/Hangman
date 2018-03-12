@@ -1,5 +1,6 @@
 @import 'abstracts/var';
 @import 'abstracts/keyframes';
+@import 'abstracts/util';
 
 @import 'base/base';
 
@@ -7,6 +8,7 @@
 @import 'components/loader';
 
 @import 'layout/header';
+@import 'layout/game';
 
 @import 'pages/main-menu';
 

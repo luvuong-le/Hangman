@@ -8,7 +8,8 @@
         letter-spacing: .5rem;
         
         background: rgba(137, 208, 255, 0.76);
-      
+        border: 0;
+        
         // box-shadow: .5rem .5rem .5rem #aaa;
         text-decoration: none;
         text-transform: uppercase;
@@ -56,4 +57,54 @@
             animation: moveInBottom 3s ease-in;
         }
     }
+}
+
+.hint_btn {
+     color: #fff;
+     padding: 4rem;
+     letter-spacing: .5rem;
+     background: rgba(137, 208, 255, 0.76);
+     border: 0; // box-shadow: .5rem .5rem .5rem #aaa;
+     text-decoration: none;
+     text-transform: uppercase;
+     font-weight: bold;
+     transition: all .4s;
+     position: relative;
+     
+     &::after {
+         content: "";
+         width: 0;
+         height: .3rem;
+         display: block;
+         margin: auto;
+         position: absolute;
+         left: 10%;
+         right: 10%;
+         bottom: 0%;
+         background: #ccc;
+         transition: all .4s ease-in-out;
+     }
+
+     &:hover::after {
+         width: 100%;
+         background: rgb(56, 120, 141);
+         left: 0%;
+         right: 0%;
+     }
+
+     &:hover {
+         width: 100%;
+     }
+
+     &--left {
+         animation: moveInLeft 1s ease-in;
+     }
+
+     &--right {
+         animation: moveInRight 2s ease-in;
+     }
+
+     &--bottom {
+         animation: moveInBottom 3s ease-in;
+     }
 }

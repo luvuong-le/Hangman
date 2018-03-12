@@ -2,17 +2,16 @@
     // Bug Fixes | Overrides | Misc
 
     // Width | Height
-    width: 60%;
+    width: 65%;
     height: 90%;
-
+    min-width: 1000px;
+    
     // Display | Positioning
     position: absolute;
     top: 50%;
     left: 50%;
 
     // Background | Colours | Fonts 
-    //background: #fff;
-    //border: 1rem solid #3498db;
 
     // Transitions | Animations
     animation: fadeIn 1s ease-in;
@@ -47,7 +46,7 @@
     }
 
     &--white {
-       background: #fff;
-       border: 1rem solid #3498db;
+       background: rgba(255, 255, 255, 1);
+       border: .8rem solid #3498db;
     }
 }

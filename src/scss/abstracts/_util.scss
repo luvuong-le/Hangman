@@ -1,0 +1,17 @@
+.center { text-align: center !important; }
+
+.width_auto { width: auto !important; }
+
+.flex_right { margin: 0 0 0 auto !important;}
+
+.padding-sm { padding: 1rem; }
+
+// Font Utility Classes
+.heading_font { font-family: 'Audiowide', cursive; }
+
+.upper { text-transform: uppercase; }
+
+// Animations 
+.animate_in_left { animation: moveInLeft 1s ease; }
+
+.animate_in_top { animation: moveInTop 2s ease; }
