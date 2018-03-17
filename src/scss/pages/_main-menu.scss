@@ -1,11 +1,15 @@
 .main {
     // Bug Fixes | Overrides | Misc
+    overflow: hidden;
 
     // Width | Height
     width: 65%;
     height: 90%;
-    min-width: 1000px;
-    
+
+    @media screen and (max-width: 1300px) {
+        height: 92%;
+    }
+
     // Display | Positioning
     position: absolute;
     top: 50%;
@@ -47,6 +51,6 @@
 
     &--white {
        background: rgba(255, 255, 255, 1);
-       border: .8rem solid #3498db;
+       border: .8rem double #3498db;
     }
 }

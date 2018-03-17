@@ -7,53 +7,94 @@ block content
                 span.center.animate_in_top.upper Chosen Category: Food
                 a(href="/").main__btn.width_auto.flex_right Home
             .game__content
-                .game__content-word
-                    .game__content-letter.game__content-letter--shown E
-                    .game__content-letter.game__content-letter--hidden &nbsp;
-                    .game__content-letter.game__content-letter--shown D
-                    .game__content-letter.game__content-letter--hidden &nbsp;
                 .game__content-ui
-                    .game__content-hangman
-                        img(src="http://via.placeholder.com/450x450" alt="lives")
                     .game__content-game-details
                         .game__content-guessed
-                            h1.heading_font.upper  Letters Guessed
+                            h1.heading_font.upper.center.animate_in_left  Letters Guessed
                             .game__content-letters.game__content-letters--white
-                                .game__content-letter.game__content-letter--shown A
-                                .game__content-letter.game__content-letter--shown E
-                                .game__content-letter.game__content-letter--shown E
-                                .game__content-letter.game__content-letter--shown E
-                                .game__content-letter.game__content-letter--shown E
-                                .game__content-letter.game__content-letter--shown E
+                                .game__content-letter.game__content-letter--shown 
+                                    span.game__content-letter-text A
+                                .game__content-letter.game__content-letter--shown 
+                                    span.game__content-letter-text B
+                                .game__content-letter.game__content-letter--shown 
+                                    span.game__content-letter-text R
+                                .game__content-letter.game__content-letter--shown 
+                                    span.game__content-letter-text I
+                                .game__content-letter.game__content-letter--shown 
+                                    span.game__content-letter-text O
+                                .game__content-letter.game__content-letter--shown 
+                                    span.game__content-letter-text U
+                    .game__content-hangman
+                        .game__content-word
+                            .game__content-letter.game__content-letter--shown 
+                                span.game__content-letter-text E
+                            .game__content-letter.game__content-letter--hidden &nbsp;
+                            .game__content-letter.game__content-letter--shown
+                                span.game__content-letter-text D
+                            .game__content-letter.game__content-letter--hidden &nbsp;
+                        .game__content-img
+                            img(src="http://via.placeholder.com/450x450" alt="lives")
                         .game__content-win-optinos
                 .game__content-input 
                     .game__content-hints
-                        button(type="button").hint_btn.width_auto.heading_font Use a Hint
+                        button(type="button").hint_btn.width_auto.heading_font 
+                            | Use a Hint 
+                            br
+                            br
+                            | You have 0 Left
+                        
                     .game__content-letters.game__content-letters--blue
-                        .game__content-letter.game__content-letter--shown A
-                        .game__content-letter.game__content-letter--shown B
-                        .game__content-letter.game__content-letter--shown C
-                        .game__content-letter.game__content-letter--shown D
-                        .game__content-letter.game__content-letter--shown E
-                        .game__content-letter.game__content-letter--shown F
-                        .game__content-letter.game__content-letter--shown G
-                        .game__content-letter.game__content-letter--shown H
-                        .game__content-letter.game__content-letter--shown I
-                        .game__content-letter.game__content-letter--shown J
-                        .game__content-letter.game__content-letter--shown K
-                        .game__content-letter.game__content-letter--shown L
-                        .game__content-letter.game__content-letter--shown M
-                        .game__content-letter.game__content-letter--shown N
-                        .game__content-letter.game__content-letter--shown O
-                        .game__content-letter.game__content-letter--shown P
-                        .game__content-letter.game__content-letter--shown Q
-                        .game__content-letter.game__content-letter--shown R
-                        .game__content-letter.game__content-letter--shown S
-                        .game__content-letter.game__content-letter--shown T
-                        .game__content-letter.game__content-letter--shown U
-                        .game__content-letter.game__content-letter--shown V
-                        .game__content-letter.game__content-letter--shown W
-                        .game__content-letter.game__content-letter--shown X
-                        .game__content-letter.game__content-letter--shown Y
-                        .game__content-letter.game__content-letter--shown Z
-                h1.padding-sm.heading_font.center.upper.animate_in_left  Games Won: 0 
+                        .game__content-letter.game__content-letter--shown
+                            span.game__content-letter-text A
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text B
+                        .game__content-letter.game__content-letter--shown
+                            span.game__content-letter-text C
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text D
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text E
+                        .game__content-letter.game__content-letter--shown  
+                            span.game__content-letter-text F
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text G
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text H
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text I
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text J
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text K
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text L
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text M
+                        .game__content-letter.game__content-letter--shown
+                            span.game__content-letter-text N
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text O
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text P
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text Q
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text R
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text S
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text T
+                        .game__content-letter.game__content-letter--shown  
+                            span.game__content-letter-text U
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text V
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text W
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text X
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text Y
+                        .game__content-letter.game__content-letter--shown 
+                            span.game__content-letter-text Z
+    .game-result   
+        h1.padding-sm.heading_font.center.upper.animate_in_left  Games Won: 0 

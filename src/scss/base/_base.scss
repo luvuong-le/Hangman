@@ -17,4 +17,11 @@ body {
 .container {
     width: 100%;
     height: 100%;
+    background: #fff;
+}
+
+.game-result {
+    position: fixed;
+    background: #fff;
+    padding: 1rem;
 }
