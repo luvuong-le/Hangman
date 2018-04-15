@@ -4,10 +4,17 @@
 
     // Width | Height
     width: 65%;
-    height: 90%;
+    height: 100%;
 
     @media screen and (max-width: 1300px) {
-        height: 92%;
+        width: 80%;
+        height: 100%;
+    }
+
+    @media screen and (max-width: 1050px) {
+        width: 95%;
+        height: 95%;
+        min-width: 900px;
     }
 
     // Display | Positioning
@@ -52,5 +59,14 @@
     &--white {
        background: rgba(255, 255, 255, 1);
        border: .8rem double #3498db;
+    }
+
+    &--grey {
+        background: #EEEEEE;
+        border: .2rem solid grey;
+    }
+
+    @media screen and (max-width: 1500px) {
+        
     }
 }

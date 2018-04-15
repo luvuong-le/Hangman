@@ -83,6 +83,13 @@
 .animate_in_top {
   animation: moveInTop 2s ease; }
 
+.light-red {
+  color: lightcoral; }
+
+.hidden {
+  visibility: hidden;
+  opacity: 0; }
+
 *, *::after, *::before {
   padding: 0;
   margin: 0;
@@ -220,92 +227,117 @@ body {
     height: 10%;
     display: flex;
     padding: 1rem;
-    border-bottom: .5rem double dodgerblue; }
+    border-bottom: .2rem solid grey; }
     .game__header > h1 {
-      padding: 1rem; }
+      padding: 1rem;
+      display: flex;
+      align-self: center; }
     .game__header > span {
       margin: 0 0 0 auto;
       align-self: center;
       font-size: 2rem;
       font-weight: bold; }
+    .game__header > a {
+      height: 70%;
+      align-self: center; }
   .game__content {
     position: relative;
-    height: 90%;
+    height: 100%;
     /* ------------------ HANGMAN: HIDDEN WORD  ------------------- */
     /* ------------------ HANGMAN: LETTERS AND HINTS ----------------- */
     /* -------------------- HANGMAN: UI (HANGMAN IMG && LETTERS GUESSED ------------------------------ */ }
     .game__content-word {
       display: flex;
       align-content: center;
-      justify-content: center; }
+      justify-content: center;
+      padding: 1rem 0; }
     .game__content-input {
+      display: flex; }
+    .game__content-letter-cont {
       display: flex;
-      height: 24%;
-      padding: .5rem;
-      border-top: 0.5rem double rgba(52, 152, 219, 0.8); }
+      flex-flow: row wrap; }
     .game__content-letters {
-      display: flex;
-      flex-flow: wrap;
-      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
       width: 100%;
-      justify-content: center; }
+      justify-content: center;
+      overflow: hidden; }
       .game__content-letters--white {
-        background: #fff; }
+        margin-top: 1rem; }
     .game__content-letter {
       text-align: center;
       margin: .5rem;
-      font-size: 2rem;
-      font-weight: bold; }
+      font-size: 2.5rem;
+      font-weight: bold;
+      padding: 0px 1rem; }
       .game__content-letter--hidden {
         color: #fff;
-        background: rgba(255, 255, 255, 0.5);
-        font-size: 1.6rem;
-        padding: 2.3rem;
+        font-size: 2rem;
+        margin: 0px 1rem;
         cursor: pointer;
         transition: all .5s;
         position: relative; }
         .game__content-letter--hidden::after {
           content: "";
           width: 100%;
-          height: .3rem;
+          height: .1rem;
           display: inline-block;
           position: absolute;
           left: 0%;
           bottom: 0%;
-          background: #000;
+          background: grey;
           transition: all .4s ease-in-out; }
-      .game__content-letter--shown {
+      .game__content-letter--input {
         color: #fff;
-        background: rgba(52, 152, 219, 0.8);
+        background: #3498db;
         font-size: 1.6rem;
         padding: 2.3rem;
         cursor: pointer;
-        transition: all .5s;
+        transition: all .2s;
         display: flex;
         align-content: center;
         justify-content: center; }
-        .game__content-letter--shown:hover {
-          transform: scale(1.2); }
+        .game__content-letter--input:hover {
+          opacity: 0.7; }
       .game__content-letter-text {
         align-self: center;
         justify-self: center; }
+      .game__content-letter--guessed {
+        margin: 0px 1rem; }
     .game__content-hints {
       text-transform: uppercase;
-      width: 40%;
-      padding: 1.5rem; }
+      width: 100%;
+      margin-top: auto; }
       .game__content-hints > button {
         height: 100%;
         width: 100% !important;
-        padding: 2.3rem;
+        padding: 1.5rem;
+        cursor: pointer;
+        background: rgba(52, 152, 219, 0.8); }
+    .game__content-win-options {
+      display: flex;
+      width: 100%;
+      margin-top: auto; }
+      .game__content-win-options > button {
+        height: 100%;
+        width: 100% !important;
+        padding: 1.5rem;
+        cursor: pointer;
+        margin: 0px .5rem;
         background: rgba(52, 152, 219, 0.8); }
     .game__content-ui {
       padding: .5em;
-      display: flex; }
+      display: flex;
+      height: 73%;
+      border-bottom: .2rem double grey; }
     .game__content-hangman {
-      width: 70%;
-      padding: 1rem;
+      width: 80%;
+      height: 100%;
+      padding: 1rem 2rem;
       align-self: center;
-      justify-self: center; }
+      justify-self: center;
+      display: flex;
+      flex-flow: column; }
     .game__content-img {
       width: 100%;
       display: flex;
@@ -314,13 +346,13 @@ body {
       width: 30%;
       display: flex;
       flex-flow: column;
-      padding: 2.3rem 3rem;
-      border-right: .5rem double dodgerblue; }
+      padding: 1rem 2rem;
+      border-right: .2rem solid grey; }
 
 .main {
   overflow: hidden;
   width: 65%;
-  height: 90%;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -328,7 +360,13 @@ body {
   transform: translate(-50%, -50%); }
   @media screen and (max-width: 1300px) {
     .main {
-      height: 92%; } }
+      width: 80%;
+      height: 100%; } }
+  @media screen and (max-width: 1050px) {
+    .main {
+      width: 95%;
+      height: 95%;
+      min-width: 900px; } }
   .main--hidden {
     visibility: hidden;
     opacity: 0; }
@@ -350,3 +388,6 @@ body {
   .main--white {
     background: white;
     border: .8rem double #3498db; }
+  .main--grey {
+    background: #EEEEEE;
+    border: .2rem solid grey; }

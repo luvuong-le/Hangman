@@ -7,6 +7,4 @@ window.addEventListener("load", (e) => {
         loader.classList.add("loader__hidden");
     }, 100);
 
-
-    main.classList.remove("main--hidden");
-});
+    main.classList.remove("main--hidden");});
