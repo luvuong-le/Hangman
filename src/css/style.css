@@ -269,9 +269,13 @@ body {
       margin: .5rem;
       font-size: 2.5rem;
       font-weight: bold;
-      padding: 0px 1rem; }
+      padding: 0px 1rem;
+      text-transform: uppercase; }
+      .game__content-letter--space {
+        visibility: hidden; }
       .game__content-letter--hidden {
-        color: #fff;
+        color: #000;
+        text-transform: uppercase;
         font-size: 2rem;
         margin: 0px 1rem;
         cursor: pointer;
@@ -291,7 +295,7 @@ body {
         color: #fff;
         background: #3498db;
         font-size: 1.6rem;
-        padding: 2.3rem;
+        padding: 2rem;
         cursor: pointer;
         transition: all .2s;
         display: flex;
@@ -301,7 +305,8 @@ body {
           opacity: 0.7; }
       .game__content-letter-text {
         align-self: center;
-        justify-self: center; }
+        justify-self: center;
+        text-transform: uppercase; }
       .game__content-letter--guessed {
         margin: 0px 1rem; }
     .game__content-hints {
