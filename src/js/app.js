@@ -18,12 +18,11 @@ let appManager = {
         inputs: document.querySelectorAll(".game__content-letter--input"),
         hiddenLetters: null,
         hintsBtn: document.getElementById("game__content-hints_btn"),
-        categoryTitle: document.getElementById("category_span"),
         hangmanImg: document.getElementById("hangman_img"),
         nextRoundBtn: document.getElementById("next_round"),
+        categoryTitle: document.getElementById("category_span"),
     },
 
-    // Get Category Choice from User
     getCategory: function() {
         return localStorage.getItem('category');
     },

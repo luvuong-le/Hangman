@@ -86,6 +86,9 @@
 .light-red {
   color: lightcoral; }
 
+.white {
+  color: #fff; }
+
 .hidden {
   visibility: hidden;
   opacity: 0; }
@@ -354,6 +357,28 @@ body {
       flex-flow: column;
       padding: 1rem 2rem;
       border-right: .2rem solid grey; }
+
+.tp__title {
+  margin-top: 3rem; }
+
+.tp__input {
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  margin: 1rem auto;
+  font-family: 'Audiowide', Arial, Helvetica, sans-serif; }
+
+.tp__input::-webkit-input-placeholder {
+  font-family: 'Audiowide', Arial, Helvetica, sans-serif; }
+
+.tp__input:-ms-input-placeholder {
+  font-family: 'Audiowide', Arial, Helvetica, sans-serif; }
+
+.tp__input:-moz-placeholder {
+  font-family: 'Audiowide', Arial, Helvetica, sans-serif; }
+
+.tp__input::-moz-placeholder {
+  font-family: 'Audiowide', Arial, Helvetica, sans-serif; }
 
 .main {
   overflow: hidden;

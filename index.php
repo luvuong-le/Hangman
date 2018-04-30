@@ -26,6 +26,11 @@
                     "TITLE" => "Hangman | Cateogories"
                 ];
                 break;
+            case "mode-twoplayers-setup":
+                $data = [
+                    "TITLE" => "Hangman | Two Player Setup"
+                ];
+                break;
         }
 
         echo load_page($pageName, $data);

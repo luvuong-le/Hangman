@@ -1,0 +1,18 @@
+block content
+    .container
+        .main.main--hidden#section-main
+            .main__header.heading_font
+                h1 Two Player Mode
+            .main__content
+                h1.heading_font.upper.center.animate_in_left.white.tp__title Player 1: 
+                br
+                input(type="text" placeholder="Enter Name").tp__input#tp__p1
+                h1.heading_font.upper.center.animate_in_left.white.tp__title Player 2: 
+                br
+                input(type="text" placeholder="Enter Name").tp__input#tp__p2  
+                .main__options
+                    a(href="/").main__btn.main__btn--bottom Continue 
+                    a(href="/").main__btn.main__btn--bottom Home 
+block scripts
+    script(src="../../src/js/category.js")
+
