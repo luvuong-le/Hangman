@@ -1,13 +1,10 @@
 {
     "food": [
-        "Spring Rolls",
-        "Turkey",
-        "Mc Donalds",
-        "Parma"
+        "Spring Rolls"
     ],
     "movies": [
         "Spiderman",
-        "The Greatest Showman",
+        "Avengers",
         "Pixels"
     ]
 }

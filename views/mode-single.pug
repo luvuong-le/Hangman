@@ -3,14 +3,14 @@ block content
         .main.main--hidden.main--grey#section-main
             .game__header.heading_font
                 h1.animate_in_left.upper Single Player
-                span.center.animate_in_top.upper Category: Food
+                span.center.animate_in_top.upper#category_span 
                 a(href="/").main__btn.width_auto.flex_right Home
             .game__content
                 .game__content-ui
                     .game__content-game-details
                         .game__content-guessed
                             h1.heading_font.center.animate_in_left.light-red  Letters Guessed
-                            .game__content-letter-cont.game__content-letters--white
+                            .game__content-letter-cont.game__content-letters--white#game__content-letter-guessed-cont
                                 //- .game__content-letter.game__content-letter--guessed 
                                 //-     span.game__content-letter-text A
                                 //- .game__content-letter.game__content-letter--guessed 
@@ -25,8 +25,7 @@ block content
                                 //-     span.game__content-letter-text U
                                     
                         .game__content-hints
-                            button(type="button").hint_btn.width_auto.heading_font 
-                                | Hints (0)
+                            button(type="button")#game__content-hints_btn.hint_btn.width_auto.heading_font 
                         
                     .game__content-hangman
                         .game__content-word#game__content-word
@@ -37,69 +36,43 @@ block content
                             //- .game__content-letter.game__content-letter--hidden &nbsp;
                         
                         .game__content-img
-                            img(src="http://via.placeholder.com/450x450" alt="lives")
+                            img(src="" alt="lives")#hangman_img
 
                         .game__content-win-options
-                            button(type="button").hint_btn.width_auto.heading_font 
-                                | Show Score
-                            button(type="button").hint_btn.width_auto.heading_font 
+                            //- button(type="button").hint_btn.width_auto.heading_font 
+                            //-     | Show Score
+                            button(type="button").hint_btn.width_auto.heading_font#next_round
                                 | Next Round
  
                 .game__content-input 
                     .game__content-letters.game__content-letters--blue
-                        .game__content-letter.game__content-letter--input
-                            span.game__content-letter-text A
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text B
-                        .game__content-letter.game__content-letter--input
-                            span.game__content-letter-text C
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text D
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text E
-                        .game__content-letter.game__content-letter--input  
-                            span.game__content-letter-text F
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text G
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text H
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text I
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text J
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text K
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text L
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text M
-                        .game__content-letter.game__content-letter--input
-                            span.game__content-letter-text N
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text O
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text P
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text Q
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text R
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text S
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text T
-                        .game__content-letter.game__content-letter--input  
-                            span.game__content-letter-text U
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text V
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text W
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text X
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text Y
-                        .game__content-letter.game__content-letter--input 
-                            span.game__content-letter-text Z
-    .game-result.hidden   
-        h1.padding-sm.heading_font.center.upper.animate_in_left  Games Won: 0 
+                        .game__content-letter.game__content-letter--input A
+                        .game__content-letter.game__content-letter--input B
+                        .game__content-letter.game__content-letter--input C
+                        .game__content-letter.game__content-letter--input D
+                        .game__content-letter.game__content-letter--input E
+                        .game__content-letter.game__content-letter--input F
+                        .game__content-letter.game__content-letter--input G
+                        .game__content-letter.game__content-letter--input H
+                        .game__content-letter.game__content-letter--input I
+                        .game__content-letter.game__content-letter--input J
+                        .game__content-letter.game__content-letter--input K
+                        .game__content-letter.game__content-letter--input L
+                        .game__content-letter.game__content-letter--input M
+                        .game__content-letter.game__content-letter--input N
+                        .game__content-letter.game__content-letter--input O
+                        .game__content-letter.game__content-letter--input P
+                        .game__content-letter.game__content-letter--input Q
+                        .game__content-letter.game__content-letter--input R
+                        .game__content-letter.game__content-letter--input S
+                        .game__content-letter.game__content-letter--input T
+                        .game__content-letter.game__content-letter--input U
+                        .game__content-letter.game__content-letter--input V
+                        .game__content-letter.game__content-letter--input W
+                        .game__content-letter.game__content-letter--input X
+                        .game__content-letter.game__content-letter--input Y
+                        .game__content-letter.game__content-letter--input Z
+    //- .game-result.hidden   
+    //-     h1.padding-sm.heading_font.center.upper.animate_in_left  Games Won: 0 
 block scripts
     script(src="../../src/js/app.js")

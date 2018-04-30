@@ -238,7 +238,6 @@ body {
       font-size: 2rem;
       font-weight: bold; }
     .game__header > a {
-      height: 70%;
       align-self: center; }
   .game__content {
     position: relative;
@@ -252,7 +251,8 @@ body {
       justify-content: center;
       padding: 1rem 0; }
     .game__content-input {
-      display: flex; }
+      display: flex;
+      margin-top: .5rem; }
     .game__content-letter-cont {
       display: flex;
       flex-flow: row wrap; }
@@ -269,11 +269,15 @@ body {
       margin: .5rem;
       font-size: 2.5rem;
       font-weight: bold;
-      padding: 0px 1rem; }
+      padding: 0px 1rem;
+      text-transform: uppercase; }
+      .game__content-letter--space {
+        visibility: hidden; }
       .game__content-letter--hidden {
-        color: #fff;
-        font-size: 2rem;
-        margin: 0px 1rem;
+        color: #000;
+        text-transform: uppercase;
+        font-size: 2.5rem;
+        margin: 3rem 1rem;
         cursor: pointer;
         transition: all .5s;
         position: relative; }
@@ -291,7 +295,7 @@ body {
         color: #fff;
         background: #3498db;
         font-size: 1.6rem;
-        padding: 2.3rem;
+        padding: 2rem;
         cursor: pointer;
         transition: all .2s;
         display: flex;
@@ -301,7 +305,8 @@ body {
           opacity: 0.7; }
       .game__content-letter-text {
         align-self: center;
-        justify-self: center; }
+        justify-self: center;
+        text-transform: uppercase; }
       .game__content-letter--guessed {
         margin: 0px 1rem; }
     .game__content-hints {
@@ -328,7 +333,7 @@ body {
     .game__content-ui {
       padding: .5em;
       display: flex;
-      height: 73%;
+      height: 71%;
       border-bottom: .2rem double grey; }
     .game__content-hangman {
       width: 80%;
@@ -340,6 +345,7 @@ body {
       flex-flow: column; }
     .game__content-img {
       width: 100%;
+      padding: 1rem;
       display: flex;
       justify-content: center; }
     .game__content-game-details {
