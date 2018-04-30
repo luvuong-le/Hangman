@@ -28,7 +28,17 @@
                 break;
             case "mode-twoplayers-setup":
                 $data = [
-                    "TITLE" => "Hangman | Two Player Setup"
+                    "TITLE" => "Hangman | Two Players Setup"
+                ];
+                break;
+            case "mode-twoplayers-setup-2":
+                $data = [
+                    "TITLE" => "Hangman | Two Players Setup Phase 2"
+                ];
+                break;
+            case "mode-twoplayers":
+                $data = [
+                    "TITLE" => "Hangman | Two Player Game"
                 ];
                 break;
         }

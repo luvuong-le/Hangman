@@ -1,0 +1,21 @@
+
+<div class="container">
+  <div class="main main--hidden" id="section-main">
+    <div class="main__header heading_font">
+      <h1>Two Player Mode</h1>
+      <h4 id="main__header__player"></h4>
+      <h4>Choose a Word and Hints</h4>
+    </div>
+    <div class="main__content">
+      <form method="POST" action="/?mode-twoplayers.html" id="tp__gameinfo__form">
+        <h1 class="heading_font upper center animate_in_left white tp__title">Word: </h1><br/>
+        <input class="tp__input" type="text" placeholder="Enter Word" id="tp__word"/>
+        <h1 class="heading_font upper center animate_in_left white tp__title">Number of Hints (0-9): </h1><br/>
+        <input class="tp__input" type="number" placeholder="Enter Number Of Hints" id="tp__hints"/>
+        <input class="tp__input" type="submit" value="Continue" id="tp__continue-2"/>
+      </form>
+      <div class="main__options"><a class="main__btn main__btn--bottom" href="/">Home </a></div>
+    </div>
+  </div>
+</div>
+<script src="../../src/js/tpsetup2.js"></script>

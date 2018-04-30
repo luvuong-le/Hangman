@@ -2,8 +2,7 @@ block content
     .container
         .main.main--hidden.main--grey#section-main
             .game__header.heading_font
-                h1.animate_in_left.upper Single Player
-                span.center.animate_in_top.upper#category_span 
+                h1.animate_in_left.upper Two Players
                 a(href="/").main__btn.width_auto.flex_right Home
             .game__content
                 .game__content-ui
@@ -11,36 +10,16 @@ block content
                         .game__content-guessed
                             h1.heading_font.center.animate_in_left.upper.light-red  Letters Guessed
                             .game__content-letter-cont.game__content-letters--white#game__content-letter-guessed-cont
-                                //- .game__content-letter.game__content-letter--guessed 
-                                //-     span.game__content-letter-text A
-                                //- .game__content-letter.game__content-letter--guessed 
-                                //-     span.game__content-letter-text B
-                                //- .game__content-letter.game__content-letter--guessed 
-                                //-     span.game__content-letter-text R
-                                //- .game__content-letter.game__content-letter--guessed 
-                                //-     span.game__content-letter-text I
-                                //- .game__content-letter.game__content-letter--guessed 
-                                //-     span.game__content-letter-text O
-                                //- .game__content-letter.game__content-letter--guessed 
-                                //-     span.game__content-letter-text U
-                                    
                         .game__content-hints
                             button(type="button")#game__content-hints_btn.hint_btn.width_auto.heading_font 
                         
                     .game__content-hangman
-                        .game__content-word#game__content-word
-                            //- .game__content-letter.game__content-letter--hidden &nbsp;
-                            //- .game__content-letter.game__content-letter--hidden &nbsp;
-                            //- .game__content-letter.game__content-letter--shown
-                            //-     span.game__content-letter-text D
-                            //- .game__content-letter.game__content-letter--hidden &nbsp;
-                        
+                        .game__content-word#game__content-word   
                         .game__content-img
                             img(src="" alt="lives")#hangman_img
-
                         .game__content-win-options
-                            //- button(type="button").hint_btn.width_auto.heading_font 
-                            //-     | Show Score
+                            button(type="button").hint_btn.width_auto.heading_font 
+                                | Show Score
                             button(type="button").hint_btn.width_auto.heading_font#next_round
                                 | Next Round
  
@@ -72,7 +51,8 @@ block content
                         .game__content-letter.game__content-letter--input X
                         .game__content-letter.game__content-letter--input Y
                         .game__content-letter.game__content-letter--input Z
-    //- .game-result.hidden   
-    //-     h1.padding-sm.heading_font.center.upper.animate_in_left  Games Won: 0 
+    .game-result.hidden  
+        h1.padding-sm.heading_font.center.upper.animate_in_left  Player 1 Won: 0 
+        h1.padding-sm.heading_font.center.upper.animate_in_left  Player 2 Won: 0 
 block scripts
-    script(src="../../src/js/app.js")
+    script(src="../../src/js/tpManager.js")

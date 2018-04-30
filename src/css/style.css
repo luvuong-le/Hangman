@@ -93,6 +93,9 @@
   visibility: hidden;
   opacity: 0; }
 
+.margin-center {
+  margin: 0 auto; }
+
 *, *::after, *::before {
   padding: 0;
   margin: 0;

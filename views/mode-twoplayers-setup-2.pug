@@ -1,0 +1,21 @@
+block content
+    .container
+        .main.main--hidden#section-main
+            .main__header.heading_font
+                h1 Two Player Mode
+                h4#main__header__player
+                h4 Choose a Word and Hints
+            .main__content
+                form(method="POST" action="/?mode-twoplayers.html")#tp__gameinfo__form
+                    h1.heading_font.upper.center.animate_in_left.white.tp__title Word: 
+                    br
+                    input(type="text" placeholder="Enter Word").tp__input#tp__word
+                    h1.heading_font.upper.center.animate_in_left.white.tp__title Number of Hints (0-9): 
+                    br
+                    input(type="number" placeholder="Enter Number Of Hints").tp__input#tp__hints  
+                    input(type="submit" value="Continue").tp__input#tp__continue-2
+                .main__options
+                    a(href="/").main__btn.main__btn--bottom Home 
+block scripts
+    script(src="../../src/js/tpsetup2.js")
+

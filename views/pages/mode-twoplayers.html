@@ -2,7 +2,7 @@
 <div class="container">
   <div class="main main--hidden main--grey" id="section-main">
     <div class="game__header heading_font">
-      <h1 class="animate_in_left upper">Single Player</h1><span class="center animate_in_top upper" id="category_span"> </span><a class="main__btn width_auto flex_right" href="/">Home</a>
+      <h1 class="animate_in_left upper">Two Players</h1><a class="main__btn width_auto flex_right" href="/">Home</a>
     </div>
     <div class="game__content">
       <div class="game__content-ui">
@@ -16,9 +16,11 @@
           </div>
         </div>
         <div class="game__content-hangman">
-          <div class="game__content-word" id="game__content-word"></div>
+          <div class="game__content-word" id="game__content-word">  </div>
           <div class="game__content-img"><img src="" alt="lives" id="hangman_img"/></div>
           <div class="game__content-win-options">
+            <button class="hint_btn width_auto heading_font" type="button">
+               Show Score</button>
             <button class="hint_btn width_auto heading_font" type="button" id="next_round">Next Round</button>
           </div>
         </div>
@@ -56,4 +58,8 @@
     </div>
   </div>
 </div>
-<script src="../../src/js/app.js"></script>
+<div class="game-result hidden"> 
+  <h1 class="padding-sm heading_font center upper animate_in_left"> Player 1 Won: 0 </h1>
+  <h1 class="padding-sm heading_font center upper animate_in_left"> Player 2 Won: 0 </h1>
+</div>
+<script src="../../src/js/tpManager.js"></script>
