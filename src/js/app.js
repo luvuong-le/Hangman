@@ -105,7 +105,6 @@ let appManager = {
     },
 
     guess: function(letterGuess) {
-        console.log(this.gameState);
         if (this.gameState.lives !== 0) {
             // Check if the letter to guess is in the randomWord
             if (this.gameState.randomWord.includes(letterGuess)) {
@@ -116,7 +115,10 @@ let appManager = {
 
                 // Run a check to see if hidden letter is 0 and the game is won
                 if (this.gameState.hiddenLetters === 0) {
-                    alert("You Win!");
+                    for (let letter of document.querySelectorAll(".game__content-letter--shown")) {
+                        letter.style.color = "green";
+                        letter.style.textShadow = ".1rem .1rem .5rem green";
+                    }
 
                     // Block out all letters from being clickable
                     for (let input of this.e.inputs) {
@@ -181,10 +183,18 @@ let appManager = {
         this.e.hangmanImg.src=`../../src/images/hangman_${this.gameState.lives}.png`;
 
         if (this.gameState.lives === 0) {
-            alert("Game Over! Better Luck Next Time!");
-
             // Show all the letters in the word
             this.showWord();
+
+            for (let letter of document.querySelectorAll(".game__content-letter--shown")) {
+                letter.style.color = "crimson";
+                letter.style.textShadow = ".1rem .1rem .5rem crimson";
+            }
+
+            // Block out all letters from being clickable
+            for (let input of this.e.inputs) {
+                input.style.pointerEvents = "none";
+            }
         }
     },
 
@@ -216,6 +226,11 @@ let appManager = {
             this.e.lettersGuessedCont.removeChild(this.e.lettersGuessedCont.firstChild);
         }
 
+        for (let input of this.e.inputs) {
+            input.style.pointerEvents = "";
+            input.style.background = "#3498db";
+        }
+
         this.gameState.hiddenLetters = null;
 
         this.gameState.lettersGuessed = [];
@@ -241,6 +256,7 @@ let appManager = {
             input.addEventListener("click", (e) => {
                 this.guess(e.target.innerHTML.toLowerCase());
                 input.style.pointerEvents = "none";
+                input.style.background = "#ccc";
             })
         }
 

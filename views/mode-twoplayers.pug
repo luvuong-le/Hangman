@@ -3,6 +3,7 @@ block content
         .main.main--hidden.main--grey#section-main
             .game__header.heading_font
                 h1.animate_in_left.upper Two Players
+                span.center.animate_in_top.upper#player_to_guess Player To Guess:  
                 a(href="/").main__btn.width_auto.flex_right Home
             .game__content
                 .game__content-ui
@@ -18,7 +19,7 @@ block content
                         .game__content-img
                             img(src="" alt="lives")#hangman_img
                         .game__content-win-options
-                            button(type="button").hint_btn.width_auto.heading_font 
+                            button(type="button")#show_score.hint_btn.width_auto.heading_font 
                                 | Show Score
                             button(type="button").hint_btn.width_auto.heading_font#next_round
                                 | Next Round
@@ -51,8 +52,18 @@ block content
                         .game__content-letter.game__content-letter--input X
                         .game__content-letter.game__content-letter--input Y
                         .game__content-letter.game__content-letter--input Z
-    .game-result.hidden  
-        h1.padding-sm.heading_font.center.upper.animate_in_left  Player 1 Won: 0 
-        h1.padding-sm.heading_font.center.upper.animate_in_left  Player 2 Won: 0 
+    .game-result#score_board
+        .game-result__options  
+            h1.padding-sm.heading_font.center.upper.animate_in_left  Game Scores:
+            span.game-result__close#game-result__close &times;
+        .game-result__scores
+            .game-result__score-flex
+                h1.padding-sm.heading_font.upper.animate_in_left#game-result__p1Name  Player 1
+                br  
+                h1.padding-sm.heading_font.center.upper.animate_in_left#game-result__p1Score 0
+            .game-result__score-flex
+                h1.padding-sm.heading_font.center.upper.animate_in_left#game-result__p2Name  Player 2 
+                br  
+                h1.padding-sm.heading_font.center.upper.animate_in_left#game-result__p2Score 0
 block scripts
     script(src="../../src/js/tpManager.js")

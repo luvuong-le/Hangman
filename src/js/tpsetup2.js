@@ -14,30 +14,24 @@ let twoPlayersetUp2 = {
 
     setListeners: function () {
         this.e.continueBtnPhase2.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            if (this.e.tpWord.value === "") {
-                this.e.tpWord.style.border = "2px solid crimson";
-            } else {
-                this.e.tpWord.style.border = "initial";
-            }
-
-            if (this.e.tpHints.value === "") {
-                this.e.tpHints.style.border = "2px solid crimson";
-            } else {
-                this.e.tpHints.style.border = "initial";
-            }
-
-            if (this.e.tpWord.value !== "" && this.e.tpHints.value !== "") {
-                this.saveToLS();
-                this.e.form.submit();
-            }
-        })
+            this.saveToLS();
+        });
     },
 
     init: function () {
         this.setListeners();
-        this.e.playerTurn.innerHTML = localStorage.getItem("playerTurn");
+
+        if (sessionStorage.getItem("gameState") !== null) {
+            let gameStateData = JSON.parse(sessionStorage.getItem("gameState"));
+
+            if (gameStateData.playerToGuess === 1) {
+                this.e.playerTurn.innerHTML = gameStateData.player2.name;
+            } else {
+                this.e.playerTurn.innerHTML = gameStateData.player1.name;
+            }
+        } else {
+            this.e.playerTurn.innerHTML = localStorage.getItem("playerTurn");
+        }
     }
 };
 

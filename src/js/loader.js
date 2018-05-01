@@ -8,3 +8,5 @@ window.addEventListener("load", (e) => {
     }, 100);
 
     main.classList.remove("main--hidden");});
+
+sessionStorage.removeItem("refreshed");

@@ -9,10 +9,10 @@
     <div class="main__content">
       <form method="POST" action="/?mode-twoplayers.html" id="tp__gameinfo__form">
         <h1 class="heading_font upper center animate_in_left white tp__title">Word: </h1><br/>
-        <input class="tp__input" type="text" placeholder="Enter Word" id="tp__word"/>
+        <input class="tp__input" type="password" placeholder="Enter Word" pattern=".{0,10}" required="required" title="0 to 10 Characters" id="tp__word"/>
         <h1 class="heading_font upper center animate_in_left white tp__title">Number of Hints (0-9): </h1><br/>
-        <input class="tp__input" type="number" placeholder="Enter Number Of Hints" id="tp__hints"/>
-        <input class="tp__input" type="submit" value="Continue" id="tp__continue-2"/>
+        <input class="tp__input" type="number" placeholder="Enter Number Of Hints" min="1" max="9" required="required" title="1 to 9" id="tp__hints"/>
+        <input class="tp__input" type="submit" value="Play Game" id="tp__continue-2"/>
       </form>
       <div class="main__options"><a class="main__btn main__btn--bottom" href="/">Home </a></div>
     </div>

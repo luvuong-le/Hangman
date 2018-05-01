@@ -3,11 +3,20 @@ let tpManager = {
     gameState: {
         randomWord: "",
         hiddenLetters: null,
-        hints: 3,
+        hints: null,
         lettersGuessed: [],
         spacesInword: null,
         hintLetters: [],
         lives: 6,
+        player1: {
+            name: null,
+            score: 0,
+        },
+        player2: {
+            name: null, 
+            score: 0,
+        },
+        playerToGuess: 2,
     },
 
     e: {
@@ -18,6 +27,14 @@ let tpManager = {
         hintsBtn: document.getElementById("game__content-hints_btn"),
         hangmanImg: document.getElementById("hangman_img"),
         nextRoundBtn: document.getElementById("next_round"),
+        playerToGuess: document.getElementById("player_to_guess"),
+        showScoreBtn: document.getElementById("show_score"),
+        scoreBoard: document.getElementById("score_board"),
+        scoreBoardClose: document.getElementById("game-result__close"),
+        scoreBoardP1Name: document.getElementById("game-result__p1Name"),
+        scoreBoardP1Score: document.getElementById("game-result__p1Score"),
+        scoreBoardP2Name: document.getElementById("game-result__p2Name"),
+        scoreBoardP2Score: document.getElementById("game-result__p2Score")
     },
 
     //  Get a random word from the returned array
@@ -44,10 +61,10 @@ let tpManager = {
     },
 
     removeLSState: function () {
-        localStorage.removeItem("categoryWords");
-        localStorage.removeItem("category");
+        localStorage.removeItem("playerTurn");
         localStorage.removeItem("twoPlayerHints");
         localStorage.removeItem("twoPlayerWord");
+        localStorage.setItem("gameSet", true);
     },
 
     setState: function () {
@@ -56,7 +73,28 @@ let tpManager = {
         this.gameState.spacesInword = this.getSpacesInWord();
         this.gameState.hiddenLetters = this.gameState.hiddenLetters - this.gameState.spacesInword;
         this.gameState.hintLetters = this.gameState.randomWord.replace(/\s/g, '').split("");
+        this.gameState.lives = 6;
+        this.gameState.lettersGuessed = [];
         this.setWord(this.gameState.randomWord);
+        this.gameState.hints = parseInt(localStorage.getItem("twoPlayerHints"));
+        this.e.hintsBtn.innerHTML = `Hints (${localStorage.getItem("twoPlayerHints")})`;
+        this.e.hangmanImg.src = "../../src/images/hangman_6.png";
+
+        // Set player details
+        this.gameState.player1.name = localStorage.getItem("player1Name");
+        this.gameState.player2.name = localStorage.getItem("player2Name");
+        this.e.playerToGuess.innerHTML = `Player To Guess: ${this.getPlayerToGuessName()}`;
+
+        // Set Score Details 
+        this.updateScoreUI();
+    },
+
+    getPlayerToGuessName: function() {
+        if (this.gameState.playerToGuess === 1) {
+            return this.gameState.player1.name;
+        } else {
+            return this.gameState.player2.name;
+        } 
     },
 
     getSpacesInWord: function () {
@@ -72,7 +110,6 @@ let tpManager = {
     },
 
     guess: function (letterGuess) {
-        console.log(this.gameState);
         if (this.gameState.lives !== 0) {
             // Check if the letter to guess is in the randomWord
             if (this.gameState.randomWord.includes(letterGuess)) {
@@ -83,12 +120,18 @@ let tpManager = {
 
                 // Run a check to see if hidden letter is 0 and the game is won
                 if (this.gameState.hiddenLetters === 0) {
-                    alert("You Win!");
+                    for (let letter of document.querySelectorAll(".game__content-letter--shown")) {
+                        letter.style.color = "green";
+                        letter.style.textShadow = ".1rem .1rem .5rem green";
+                    }
 
                     // Block out all letters from being clickable
                     for (let input of this.e.inputs) {
                         input.style.pointerEvents = "none";
                     }
+
+                    this.updateWinScore();
+                    this.updateScoreUI();
                 }
 
             } else {
@@ -148,11 +191,43 @@ let tpManager = {
         this.e.hangmanImg.src = `../../src/images/hangman_${this.gameState.lives}.png`;
 
         if (this.gameState.lives === 0) {
-            alert("Game Over! Better Luck Next Time!");
-
             // Show all the letters in the word
             this.showWord();
+
+            for (let letter of document.querySelectorAll(".game__content-letter--shown")) {
+                letter.style.color = "crimson";
+                letter.style.textShadow = ".1rem .1rem .5rem crimson";
+            }
+
+            // Block out all letters from being clickable
+            for (let input of this.e.inputs) {
+                input.style.pointerEvents = "none";
+                input.style.background = "#ccc";
+            }
         }
+    },
+
+    swapTurns: function() {
+        if (this.gameState.playerToGuess === 1) {
+            this.gameState.playerToGuess = 2;
+        } else {
+            this.gameState.playerToGuess = 1;
+        } 
+    },
+
+    updateWinScore: function() {
+        if (this.gameState.playerToGuess === 1) {
+            this.gameState.player1.score++;
+        } else {
+            this.gameState.player2.score++;
+        }
+    },
+
+    updateScoreUI: function() {
+        this.e.scoreBoardP1Name.innerHTML = this.gameState.player1.name;
+        this.e.scoreBoardP2Name.innerHTML = this.gameState.player2.name;
+        this.e.scoreBoardP1Score.innerHTML = this.gameState.player1.score;
+        this.e.scoreBoardP2Score.innerHTML = this.gameState.player2.score;
     },
 
     useHint: function () {
@@ -172,42 +247,12 @@ let tpManager = {
         }
     },
 
-    resetGame: function () {
-        // Remove all children from hidden word 
-        while (this.e.wordContainer.firstChild) {
-            this.e.wordContainer.removeChild(this.e.wordContainer.firstChild);
-        }
-
-        // Remove all children from letters guessed
-        while (this.e.lettersGuessedCont.firstChild) {
-            this.e.lettersGuessedCont.removeChild(this.e.lettersGuessedCont.firstChild);
-        }
-
-        this.gameState.hiddenLetters = null;
-
-        this.gameState.lettersGuessed = [];
-
-        this.gameState.lives = 6;
-
-        for (let input of this.e.inputs) {
-            input.style.pointerEvents = "";
-        }
-
-        this.gameState.hints = 3;
-
-        // Set up State
-        this.gameState.category = this.getCategory();
-        this.e.categoryTitle.innerHTML = `Category: ${this.gameState.category}`;
-        this.e.hintsBtn.innerHTML = `Hints (${this.gameState.hints})`;
-        this.e.hangmanImg.src = "../../src/images/hangman_6.png";
-        this.saveCategoryWordsLS();
-    },
-
     setListeners: function () {
         for (let input of this.e.inputs) {
             input.addEventListener("click", (e) => {
                 this.guess(e.target.innerHTML.toLowerCase());
                 input.style.pointerEvents = "none";
+                input.style.background = "#ccc";
             })
         }
 
@@ -221,19 +266,48 @@ let tpManager = {
         });
 
         this.e.nextRoundBtn.addEventListener("click", () => {
-            this.resetGame();
+            this.swapTurns();
+
+            // Save current game state to session storage
+            sessionStorage.setItem("gameState", JSON.stringify(this.gameState));
+
+            window.location.href = "/?mode-twoplayers-setup-2.html";
+        });
+
+        this.e.showScoreBtn.addEventListener("click", () => {
+            this.e.scoreBoard.style.transform = "scale(1) translate(-50%, -50%)";
+        });
+
+        this.e.scoreBoardClose.addEventListener("click", () => {
+            this.e.scoreBoard.style.transform = "scale(0) translate(-50%, -50%)";
         });
     },
 
+    updateGameState: function() {
+        this.gameState = JSON.parse(sessionStorage.getItem("gameState"));
+    },
+
     init: function () {
+        if (sessionStorage.getItem("gameState") !== null) {
+            this.updateGameState();
+            sessionStorage.removeItem("gameState");
+        }
         this.setState();
         this.removeLSState();
-        this.e.hintsBtn.innerHTML = `Hints (${this.gameState.hints})`;
-        this.e.hangmanImg.src = "../../src/images/hangman_6.png";
-
-        // Add Listeners
         this.setListeners();
     }
 };
 
+function checkRefresh() {
+    if (sessionStorage.getItem("refreshed") === "true") {
+        window.location.href = "/";
+    }
+}
+
+window.addEventListener("beforeunload", () => {
+    sessionStorage.setItem("refreshed", "true");
+});
+
+checkRefresh();
+ 
 tpManager.init();

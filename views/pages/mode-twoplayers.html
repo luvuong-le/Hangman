@@ -2,7 +2,7 @@
 <div class="container">
   <div class="main main--hidden main--grey" id="section-main">
     <div class="game__header heading_font">
-      <h1 class="animate_in_left upper">Two Players</h1><a class="main__btn width_auto flex_right" href="/">Home</a>
+      <h1 class="animate_in_left upper">Two Players</h1><span class="center animate_in_top upper" id="player_to_guess">Player To Guess:  </span><a class="main__btn width_auto flex_right" href="/">Home</a>
     </div>
     <div class="game__content">
       <div class="game__content-ui">
@@ -19,7 +19,7 @@
           <div class="game__content-word" id="game__content-word">  </div>
           <div class="game__content-img"><img src="" alt="lives" id="hangman_img"/></div>
           <div class="game__content-win-options">
-            <button class="hint_btn width_auto heading_font" type="button">
+            <button class="hint_btn width_auto heading_font" type="button" id="show_score">
                Show Score</button>
             <button class="hint_btn width_auto heading_font" type="button" id="next_round">Next Round</button>
           </div>
@@ -58,8 +58,19 @@
     </div>
   </div>
 </div>
-<div class="game-result hidden"> 
-  <h1 class="padding-sm heading_font center upper animate_in_left"> Player 1 Won: 0 </h1>
-  <h1 class="padding-sm heading_font center upper animate_in_left"> Player 2 Won: 0 </h1>
+<div class="game-result" id="score_board">
+  <div class="game-result__options"> 
+    <h1 class="padding-sm heading_font center upper animate_in_left"> Game Scores:</h1><span class="game-result__close" id="game-result__close">&times;</span>
+  </div>
+  <div class="game-result__scores">
+    <div class="game-result__score-flex">
+      <h1 class="padding-sm heading_font upper animate_in_left" id="game-result__p1Name"> Player 1</h1><br/>
+      <h1 class="padding-sm heading_font center upper animate_in_left" id="game-result__p1Score">0</h1>
+    </div>
+    <div class="game-result__score-flex">
+      <h1 class="padding-sm heading_font center upper animate_in_left" id="game-result__p2Name"> Player 2 </h1><br/>
+      <h1 class="padding-sm heading_font center upper animate_in_left" id="game-result__p2Score">0</h1>
+    </div>
+  </div>
 </div>
 <script src="../../src/js/tpManager.js"></script>
