@@ -1,10 +1,20 @@
 {
     "food": [
-        "Spring Rolls"
+        "Spring Rolls",
+        "Parmagiana",
+        "Sausage Rolls",
+        "Pasta",
+        "Spaghetti",
+        "Pizza",
+        "Cheesecake",
+        "Schnitzel"
     ],
     "movies": [
         "Spiderman",
         "Avengers",
-        "Pixels"
+        "Pixels",
+        "Rampage",
+        "Pokemon",
+        "Peter Rabbit"
     ]
 }

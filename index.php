@@ -23,7 +23,7 @@
                 break;
             case "mode-single-category":
                 $data = [
-                    "TITLE" => "Hangman | Cateogories"
+                    "TITLE" => "Hangman | Categories"
                 ];
                 break;
             case "mode-twoplayers-setup":

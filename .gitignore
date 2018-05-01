@@ -1,3 +1,4 @@
 node_modules
 package-lock.json
 .htaccess
+src/images/hangman.psd

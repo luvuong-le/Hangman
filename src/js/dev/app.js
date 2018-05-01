@@ -1,22 +1,15 @@
-let tpManager = {
+let appManager = {
 
     gameState: {
+        category: "",
+        categoryWords: null,
         randomWord: "",
         hiddenLetters: null,
-        hints: null,
+        hints: 3,
         lettersGuessed: [],
         spacesInword: null,
         hintLetters: [],
         lives: 6,
-        player1: {
-            name: null,
-            score: 0,
-        },
-        player2: {
-            name: null, 
-            score: 0,
-        },
-        playerToGuess: 2,
     },
 
     e: {
@@ -27,25 +20,38 @@ let tpManager = {
         hintsBtn: document.getElementById("game__content-hints_btn"),
         hangmanImg: document.getElementById("hangman_img"),
         nextRoundBtn: document.getElementById("next_round"),
-        playerToGuess: document.getElementById("player_to_guess"),
-        showScoreBtn: document.getElementById("show_score"),
-        scoreBoard: document.getElementById("score_board"),
-        scoreBoardClose: document.getElementById("game-result__close"),
-        scoreBoardP1Name: document.getElementById("game-result__p1Name"),
-        scoreBoardP1Score: document.getElementById("game-result__p1Score"),
-        scoreBoardP2Name: document.getElementById("game-result__p2Name"),
-        scoreBoardP2Score: document.getElementById("game-result__p2Score")
+        categoryTitle: document.getElementById("category_span"),
+    },
+
+    getCategory: function() {
+        return localStorage.getItem('category');
+    },
+
+    // Based on Category Choice: Return an array of words
+    saveCategoryWordsLS: function() {
+        fetch('./data/game-content.json')
+        .then(res => res.json())
+        .then((data) => {
+            localStorage.setItem('categoryWords', JSON.stringify(data));
+        })
+        .then(() => {
+            this.setState();
+            this.removeLSState();
+        })
+        .catch(function (error) {
+            console.log('Request failed', error);
+        });
     },
 
     //  Get a random word from the returned array
-    getRandomWord: function () {
-        return localStorage.getItem("twoPlayerWord");
+    getRandomWord: function() {
+        return this.gameState.categoryWords[Math.floor(Math.random() * this.gameState.categoryWords.length)];
     },
 
     // Build the hidden fields in the UI
     //.game__content-letter.game__content-letter--guessed
     // span.game__content-letter-text A
-    setWord: function (word) {
+    setWord: function(word) {
         for (let i = 0; i < word.length; i++) {
             let div = document.createElement("div");
 
@@ -54,50 +60,32 @@ let tpManager = {
             } else {
                 div.className = "game__content-letter game__content-letter--hidden";
             }
-
+    
             this.e.wordContainer.appendChild(div);
         }
         this.e.hiddenLetters = document.querySelectorAll(".game__content-letter--hidden")
     },
 
-    removeLSState: function () {
-        localStorage.removeItem("playerTurn");
-        localStorage.removeItem("twoPlayerHints");
-        localStorage.removeItem("twoPlayerWord");
-        localStorage.setItem("gameSet", true);
+    setCategoryWords: function() {
+        let words = JSON.parse(localStorage.getItem('categoryWords'));
+        return words[this.getCategory().toLowerCase()];
     },
 
-    setState: function () {
+    removeLSState: function() {
+        localStorage.removeItem("categoryWords");
+    },
+
+    setState: function() {
+        this.gameState.categoryWords = this.setCategoryWords();
         this.gameState.randomWord = this.getRandomWord().toLowerCase();
         this.gameState.hiddenLetters = this.gameState.randomWord.length;
         this.gameState.spacesInword = this.getSpacesInWord();
         this.gameState.hiddenLetters = this.gameState.hiddenLetters - this.gameState.spacesInword;
         this.gameState.hintLetters = this.gameState.randomWord.replace(/\s/g, '').split("");
-        this.gameState.lives = 6;
-        this.gameState.lettersGuessed = [];
         this.setWord(this.gameState.randomWord);
-        this.gameState.hints = parseInt(localStorage.getItem("twoPlayerHints"));
-        this.e.hintsBtn.innerHTML = `Hints (${localStorage.getItem("twoPlayerHints")})`;
-        this.e.hangmanImg.src = "../../src/images/hangman_6.png";
-
-        // Set player details
-        this.gameState.player1.name = localStorage.getItem("player1Name");
-        this.gameState.player2.name = localStorage.getItem("player2Name");
-        this.e.playerToGuess.innerHTML = `Player To Guess: ${this.getPlayerToGuessName()}`;
-
-        // Set Score Details 
-        this.updateScoreUI();
     },
 
-    getPlayerToGuessName: function() {
-        if (this.gameState.playerToGuess === 1) {
-            return this.gameState.player1.name;
-        } else {
-            return this.gameState.player2.name;
-        } 
-    },
-
-    getSpacesInWord: function () {
+    getSpacesInWord: function() {
         let spaces = 0;
 
         for (let i = 0; i < this.gameState.randomWord.length; i++) {
@@ -109,7 +97,7 @@ let tpManager = {
         return spaces;
     },
 
-    guess: function (letterGuess) {
+    guess: function(letterGuess) {
         if (this.gameState.lives !== 0) {
             // Check if the letter to guess is in the randomWord
             if (this.gameState.randomWord.includes(letterGuess)) {
@@ -130,8 +118,7 @@ let tpManager = {
                         input.style.pointerEvents = "none";
                     }
 
-                    this.updateWinScore();
-                    this.updateScoreUI();
+                    this.e.hintsBtn.style.pointerEvents = "none";
                 }
 
             } else {
@@ -142,7 +129,7 @@ let tpManager = {
         }
     },
 
-    findLetters: function (letter) {
+    findLetters: function(letter) {
         let indicies = [];
         for (let i = 0; i < this.gameState.randomWord.length; i++) {
             if (this.gameState.randomWord[i] === letter) {
@@ -153,14 +140,14 @@ let tpManager = {
         return indicies;
     },
 
-    replaceLetters: function (indices, letter) {
+    replaceLetters: function(indices, letter) {
         for (let i of indices) {
             this.e.hiddenLetters[i].innerHTML = letter;
 
             this.e.hiddenLetters[i].className = "game__content-letter game__content-letter--shown";
 
             // Minus one letter from hidden letters in the game state object
-            this.gameState.hiddenLetters--;
+            this.gameState.hiddenLetters--; 
 
             this.gameState.hintLetters = this.gameState.hintLetters.filter((string) => {
                 return string !== letter;
@@ -168,7 +155,7 @@ let tpManager = {
         }
     },
 
-    incorrectLetter: function (letter) {
+    incorrectLetter: function(letter) {
         let newLetter = document.createElement("div");
         newLetter.className = "game__content-letter game__content-letter--guessed";
 
@@ -188,7 +175,7 @@ let tpManager = {
         // Minus Live by 1 and Change image
         this.gameState.lives--;
 
-        this.e.hangmanImg.src = `../../src/images/hangman_${this.gameState.lives}.png`;
+        this.e.hangmanImg.src=`../../src/images/hangman_${this.gameState.lives}.png`;
 
         if (this.gameState.lives === 0) {
             // Show all the letters in the word
@@ -202,44 +189,31 @@ let tpManager = {
             // Block out all letters from being clickable
             for (let input of this.e.inputs) {
                 input.style.pointerEvents = "none";
-                input.style.background = "#ccc";
             }
         }
     },
 
-    swapTurns: function() {
-        if (this.gameState.playerToGuess === 1) {
-            this.gameState.playerToGuess = 2;
-        } else {
-            this.gameState.playerToGuess = 1;
-        } 
-    },
-
-    updateWinScore: function() {
-        if (this.gameState.playerToGuess === 1) {
-            this.gameState.player1.score++;
-        } else {
-            this.gameState.player2.score++;
+    useHint: function() {
+        // Get a random letter from array 
+        let randomLetter = this.gameState.hintLetters[Math.floor(Math.random() * this.gameState.hintLetters.length)];
+        
+        // Make the letter disabled in letter container
+        for (let input of this.e.inputs) {
+            if (input.innerHTML.toLowerCase() === randomLetter) {
+                input.style.pointerEvents = "none";
+                input.style.background = "#ccc";
+            }
         }
+
+        return randomLetter;
     },
 
-    updateScoreUI: function() {
-        this.e.scoreBoardP1Name.innerHTML = this.gameState.player1.name;
-        this.e.scoreBoardP2Name.innerHTML = this.gameState.player2.name;
-        this.e.scoreBoardP1Score.innerHTML = this.gameState.player1.score;
-        this.e.scoreBoardP2Score.innerHTML = this.gameState.player2.score;
-    },
-
-    useHint: function () {
-        return this.gameState.hintLetters[Math.floor(Math.random() * this.gameState.hintLetters.length)];
-    },
-
-    updateHintStatus: function () {
+    updateHintStatus: function() {
         this.gameState.hints--;
         this.e.hintsBtn.innerHTML = `Hints (${this.gameState.hints})`;
     },
 
-    showWord: function () {
+    showWord: function() {
         let randomword = this.gameState.randomWord.split("");
         for (let i = 0; i < this.e.hiddenLetters.length; i++) {
             this.e.hiddenLetters[i].innerHTML = randomword[i];
@@ -247,7 +221,45 @@ let tpManager = {
         }
     },
 
-    setListeners: function () {
+    resetGame: function() {
+        // Remove all children from hidden word 
+        while (this.e.wordContainer.firstChild) {
+            this.e.wordContainer.removeChild(this.e.wordContainer.firstChild);
+        }
+
+        // Remove all children from letters guessed container
+        while (this.e.lettersGuessedCont.firstChild) {
+            this.e.lettersGuessedCont.removeChild(this.e.lettersGuessedCont.firstChild);
+        }
+
+        for (let input of this.e.inputs) {
+            input.style.pointerEvents = "";
+            input.style.background = "#3498db";
+        }
+
+        this.gameState.hiddenLetters = null;
+
+        this.gameState.lettersGuessed = [];
+
+        this.gameState.lives = 6;
+
+        for (let input of this.e.inputs) {
+            input.style.pointerEvents = "";
+        }
+
+        this.e.hintsBtn.style.pointerEvents = "";
+
+        this.gameState.hints = 3;
+
+        // Set up State
+        this.gameState.category = this.getCategory();
+        this.e.categoryTitle.innerHTML = `Category: ${this.gameState.category}`;
+        this.e.hintsBtn.innerHTML = `Hints (${this.gameState.hints})`;
+        this.e.hangmanImg.src = "../../src/images/hangman_6.png";
+        this.saveCategoryWordsLS();
+    },
+
+    setListeners: function() {
         for (let input of this.e.inputs) {
             input.addEventListener("click", (e) => {
                 this.guess(e.target.innerHTML.toLowerCase());
@@ -262,52 +274,25 @@ let tpManager = {
                 this.updateHintStatus();
             } else {
                 alert("Hints are not usable");
-            }
+            }            
         });
 
         this.e.nextRoundBtn.addEventListener("click", () => {
-            this.swapTurns();
-
-            // Save current game state to session storage
-            sessionStorage.setItem("gameState", JSON.stringify(this.gameState));
-
-            window.location.href = "/?mode-twoplayers-setup-2.html";
-        });
-
-        this.e.showScoreBtn.addEventListener("click", () => {
-            this.e.scoreBoard.style.transform = "scale(1) translate(-50%, -50%)";
-        });
-
-        this.e.scoreBoardClose.addEventListener("click", () => {
-            this.e.scoreBoard.style.transform = "scale(0) translate(-50%, -50%)";
+            this.resetGame();
         });
     },
 
-    updateGameState: function() {
-        this.gameState = JSON.parse(sessionStorage.getItem("gameState"));
-    },
+    init: function() {
+        // Set up State
+        this.gameState.category = this.getCategory();
+        this.e.categoryTitle.innerHTML = `Category: ${this.gameState.category}`;
+        this.e.hintsBtn.innerHTML = `Hints (${this.gameState.hints})`;
+        this.e.hangmanImg.src = "../../src/images/hangman_6.png";
+        this.saveCategoryWordsLS();
 
-    init: function () {
-        if (sessionStorage.getItem("gameState") !== null) {
-            this.updateGameState();
-            sessionStorage.removeItem("gameState");
-        }
-        this.setState();
-        this.removeLSState();
+        // Add Listeners
         this.setListeners();
     }
 };
 
-function checkRefresh() {
-    if (sessionStorage.getItem("refreshed") === "true") {
-        window.location.href = "/";
-    }
-}
-
-window.addEventListener("beforeunload", () => {
-    sessionStorage.setItem("refreshed", "true");
-});
-
-checkRefresh();
- 
-tpManager.init();
+appManager.init();

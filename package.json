@@ -12,13 +12,16 @@
     "compress:css": "node-sass ./src/css/style.prefix.css ./src/css/style.min.css --output-style compressed",
     "webpack-dev": "webpack-dev-server",
     "webpack-watch": "webpack --watch",
+    "babel:build": "babel src/js/dev -d src/js/babel",
     "dev": "npm-run-all --parallel pug-watch sass-watch",
-    "build": "npm-run-all compile:sass prefix:css compress:css compile:pug"
+    "build": "npm-run-all compile:sass prefix:css compress:css compile:pug babel:build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^8.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "postcss-cli": "^5.0.0",
