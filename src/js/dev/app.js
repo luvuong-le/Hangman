@@ -29,7 +29,7 @@ let appManager = {
 
     // Based on Category Choice: Return an array of words
     saveCategoryWordsLS: function() {
-        fetch('./data/game-content.json')
+        fetch('/data/game-content.json')
         .then(res => res.json())
         .then((data) => {
             localStorage.setItem('categoryWords', JSON.stringify(data));

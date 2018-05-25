@@ -1,0 +1,67 @@
+<!DOCTYPE html >
+<html>  
+  <head>  
+    <title>Hangman</title>
+    <link rel="stylesheet" href="../css/style.min.css"/>
+  </head>
+  <body> 
+    <div class="container">
+      <div class="main main--grey" id="section-main">
+        <div class="game__header heading_font">
+          <h1 class="animate_in_left upper">Single Player</h1><span class="center animate_in_top upper" id="category_span"> </span><a class="main__btn width_auto flex_right" href="/">Home</a>
+        </div>
+        <div class="game__content">
+          <div class="game__content-ui">
+            <div class="game__content-game-details">
+              <div class="game__content-guessed">
+                <h1 class="heading_font center animate_in_left upper light-red"> Letters Guessed</h1>
+                <div class="game__content-letter-cont game__content-letters--white" id="game__content-letter-guessed-cont"></div>
+              </div>
+              <div class="game__content-hints">
+                <button class="hint_btn width_auto heading_font" type="button" id="game__content-hints_btn"> </button>
+              </div>
+            </div>
+            <div class="game__content-hangman">
+              <div class="game__content-word" id="game__content-word"></div>
+              <div class="game__content-img"><img src="" alt="lives" id="hangman_img"/></div>
+              <div class="game__content-win-options">
+                <button class="hint_btn width_auto heading_font" type="button" id="next_round">Next Round</button>
+              </div>
+            </div>
+          </div>
+          <div class="game__content-input"> 
+            <div class="game__content-letters game__content-letters--blue">
+              <div class="game__content-letter game__content-letter--input">A</div>
+              <div class="game__content-letter game__content-letter--input">B</div>
+              <div class="game__content-letter game__content-letter--input">C</div>
+              <div class="game__content-letter game__content-letter--input">D</div>
+              <div class="game__content-letter game__content-letter--input">E</div>
+              <div class="game__content-letter game__content-letter--input">F</div>
+              <div class="game__content-letter game__content-letter--input">G</div>
+              <div class="game__content-letter game__content-letter--input">H</div>
+              <div class="game__content-letter game__content-letter--input">I</div>
+              <div class="game__content-letter game__content-letter--input">J</div>
+              <div class="game__content-letter game__content-letter--input">K</div>
+              <div class="game__content-letter game__content-letter--input">L</div>
+              <div class="game__content-letter game__content-letter--input">M</div>
+              <div class="game__content-letter game__content-letter--input">N</div>
+              <div class="game__content-letter game__content-letter--input">O</div>
+              <div class="game__content-letter game__content-letter--input">P</div>
+              <div class="game__content-letter game__content-letter--input">Q</div>
+              <div class="game__content-letter game__content-letter--input">R</div>
+              <div class="game__content-letter game__content-letter--input">S</div>
+              <div class="game__content-letter game__content-letter--input">T</div>
+              <div class="game__content-letter game__content-letter--input">U</div>
+              <div class="game__content-letter game__content-letter--input">V</div>
+              <div class="game__content-letter game__content-letter--input">W</div>
+              <div class="game__content-letter game__content-letter--input">X</div>
+              <div class="game__content-letter game__content-letter--input">Y</div>
+              <div class="game__content-letter game__content-letter--input">Z</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/app.min.js"></script>
+  </body>
+</html>

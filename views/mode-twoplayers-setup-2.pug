@@ -1,21 +1,22 @@
-block content
-    .container
-        .main#section-main
-            .main__header.heading_font
-                h1 Two Player Mode
-                h4#main__header__player
-                h4 Choose a Word and Hints
-            .main__content
-                form(method="POST" action="/?mode-twoplayers.html")#tp__gameinfo__form
-                    h1.heading_font.upper.center.animate_in_left.white.tp__title Word: 
-                    br
-                    input(type="password" placeholder="Enter Word" pattern="[A-Za-z]{1,10}" required title="1 - 10 Characters with no special characters or digits").tp__input#tp__word
-                    h1.heading_font.upper.center.animate_in_left.white.tp__title Number of Hints (0-9): 
-                    br
-                    input(type="number" placeholder="Enter Number Of Hints" min="0" max="9" required title="0 to 9").tp__input#tp__hints  
-                    input(type="submit" value="Play Game").tp__input#tp__continue-2
-                .main__options
-                    a(href="/").main__btn.main__btn--bottom Home 
-block scripts
-    script(src="../../src/js/tpsetup2.min.js")
+include partials/layout.pug
+    block content
+        .container
+            .main#section-main
+                .main__header.heading_font
+                    h1 Two Player Mode
+                    h4#main__header__player
+                    h4 Choose a Word and Hints
+                .main__content
+                    form(method="POST" action="/?mode-twoplayers.html")#tp__gameinfo__form
+                        h1.heading_font.upper.center.animate_in_left.white.tp__title Word: 
+                        br
+                        input(type="password" placeholder="Enter Word" pattern="[A-Za-z]{1,10}" required title="1 - 10 Characters with no special characters or digits").tp__input#tp__word
+                        h1.heading_font.upper.center.animate_in_left.white.tp__title Number of Hints (0-9): 
+                        br
+                        input(type="number" placeholder="Enter Number Of Hints" min="0" max="9" required title="0 to 9").tp__input#tp__hints  
+                        input(type="submit" value="Play Game").tp__input#tp__continue-2
+                    .main__options
+                        a(href="/").main__btn.main__btn--bottom Home 
+    block scripts
+        script(src="../tpsetup2.min.js")
 

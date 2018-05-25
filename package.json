@@ -4,8 +4,8 @@
   "description": "Web Development Hangman Game",
   "main": "index.js",
   "scripts": {
-    "pug-watch": "pug -w ./views/ -o ./views/pages/ -P",
-    "compile:pug": "pug ./views/ -o ./views/pages/ -P",
+    "pug-watch": "pug -w ./views/ -o ./src/pages/ -P",
+    "compile:pug": "pug ./views/ -o ./src/pages/ -P",
     "sass-watch": "node-sass -w ./src/scss/main.scss ./src/css/style.css",
     "compile:sass": "node-sass ./src/scss/main.scss ./src/css/style.css",
     "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" ./src/css/style.css -o ./src/css/style.prefix.css",

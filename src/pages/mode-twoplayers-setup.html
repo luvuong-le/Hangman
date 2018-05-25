@@ -1,0 +1,27 @@
+<!DOCTYPE html >
+<html>  
+  <head>  
+    <title>Hangman</title>
+    <link rel="stylesheet" href="../css/style.min.css"/>
+  </head>
+  <body> 
+    <div class="container">
+      <div class="main" id="section-main">
+        <div class="main__header heading_font">
+          <h1>Two Player Mode</h1>
+        </div>
+        <div class="main__content">
+          <form method="POST" action="mode-twoplayers-setup-2.html" id="tp__name__form">
+            <h1 class="heading_font upper center animate_in_left white tp__title">Player 1: </h1><br/>
+            <input class="tp__input" type="text" placeholder="Enter Name" pattern=".{1,12}" required="required" title="1 to 12 Characters" id="tp__p1"/>
+            <h1 class="heading_font upper center animate_in_left white tp__title">Player 2: </h1><br/>
+            <input class="tp__input" type="text" placeholder="Enter Name" pattern=".{1,12}" required="required" title="1 to 12 Characters" id="tp__p2"/>
+            <input class="tp__input" type="submit" value="Continue" id="tp__continue"/>
+          </form>
+          <div class="main__options"><a class="main__btn main__btn--bottom" href="/">Home </a></div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/tpsetup.min.js"></script>
+  </body>
+</html>

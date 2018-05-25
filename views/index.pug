@@ -1,0 +1,20 @@
+include partials/layout.pug
+    block content
+        .loader#loader 
+        .container
+            .main.main--hidden#section-main
+                .main__header.heading_font
+                    h1 Hangman
+                    p Made by Lu-Vuong Le
+                    br
+                    p Can you keep 'Man' alive?
+                    br
+                    p -- Main Menu -- 
+                .main__content
+                    .main__options
+                            a(href="/src/pages/mode-single-category.html").main__btn.main__btn--left Single Player
+                            a(href="/src/pages/mode-twoplayers-setup.html").main__btn.main__btn--right Two Player
+                            a(href="https://github.com/luvuong-le/Hangman").main__btn.main__btn--bottom View On Github 
+    block scripts
+        script(src="/src/js/loader.min.js")
+

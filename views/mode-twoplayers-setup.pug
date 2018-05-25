@@ -1,19 +1,20 @@
-block content
-    .container
-        .main#section-main
-            .main__header.heading_font
-                h1 Two Player Mode
-            .main__content
-                form(method="POST" action="/?mode-twoplayers-setup-2.html")#tp__name__form
-                    h1.heading_font.upper.center.animate_in_left.white.tp__title Player 1: 
-                    br
-                    input(type="text" placeholder="Enter Name" pattern=".{1,12}" required title="1 to 12 Characters").tp__input#tp__p1
-                    h1.heading_font.upper.center.animate_in_left.white.tp__title Player 2: 
-                    br
-                    input(type="text" placeholder="Enter Name" pattern=".{1,12}" required title="1 to 12 Characters").tp__input#tp__p2  
-                    input(type="submit" value="Continue").tp__input#tp__continue
-                .main__options
-                    a(href="/").main__btn.main__btn--bottom Home 
-block scripts
-    script(src="../../src/js/tpsetup.min.js")
+include partials/layout.pug
+    block content
+        .container
+            .main#section-main
+                .main__header.heading_font
+                    h1 Two Player Mode
+                .main__content
+                    form(method="POST" action="mode-twoplayers-setup-2.html")#tp__name__form
+                        h1.heading_font.upper.center.animate_in_left.white.tp__title Player 1: 
+                        br
+                        input(type="text" placeholder="Enter Name" pattern=".{1,12}" required title="1 to 12 Characters").tp__input#tp__p1
+                        h1.heading_font.upper.center.animate_in_left.white.tp__title Player 2: 
+                        br
+                        input(type="text" placeholder="Enter Name" pattern=".{1,12}" required title="1 to 12 Characters").tp__input#tp__p2  
+                        input(type="submit" value="Continue").tp__input#tp__continue
+                    .main__options
+                        a(href="/").main__btn.main__btn--bottom Home 
+    block scripts
+        script(src="../js/tpsetup.min.js")
 
